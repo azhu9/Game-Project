@@ -1,0 +1,8 @@
+CollisionShape2D
+Area2D
+Marker2D
+TileMap
+ColorRect
+CanvasLayer
+Camera2D
+CharacterBody2D

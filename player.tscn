@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c88xevx0ep7mx"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_c2d17"]
+[ext_resource type="Texture2D" uid="uid://dw448gpkaaqpb" path="res://placeholders/Screenshot 2024-07-22 193421.png" id="2_5mgv7"]
+[ext_resource type="PackedScene" uid="uid://bfnyewc1gghtg" path="res://gun.tscn" id="3_22swn"]
+[ext_resource type="Script" path="res://Marker2D.gd" id="4_a57ew"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6nub"]
+radius = 39.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_c2d17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x6nub")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+script = ExtResource("4_a57ew")
+
+[node name="Screenshot2024-07-22193421" type="Sprite2D" parent="Marker2D"]
+position = Vector2(2, -2)
+scale = Vector2(0.984375, 2.25758)
+texture = ExtResource("2_5mgv7")
+
+[node name="Gun" parent="Marker2D/Screenshot2024-07-22193421" instance=ExtResource("3_22swn")]
+position = Vector2(-2.03175, 0.885907)
+scale = Vector2(1.01587, 0.442953)

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfnyewc1gghtg"]
+
+[ext_resource type="Texture2D" uid="uid://cgdqvi5e08dpb" path="res://placeholders/Screenshot 2024-07-22 201501.png" id="1_y7ung"]
+[ext_resource type="Script" path="res://gun.gd" id="1_yw2m8"]
+[ext_resource type="Script" path="res://Marker2D.gd" id="3_7awij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yotau"]
+size = Vector2(86, 39)
+
+[node name="Gun" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_yw2m8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(33, -0.5)
+shape = SubResource("RectangleShape2D_yotau")
+
+[node name="Screenshot2024-07-22201501" type="Sprite2D" parent="."]
+position = Vector2(32.5, -0.500001)
+scale = Vector2(2.2973, 1.57692)
+texture = ExtResource("1_y7ung")
+
+[node name="ShootingPoint" type="Marker2D" parent="Screenshot2024-07-22201501"]
+unique_name_in_owner = true
+position = Vector2(15.8882, 0.317074)
+script = ExtResource("3_7awij")

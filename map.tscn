@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj30cvyov888w"]
+
+[ext_resource type="Texture2D" uid="uid://bjy7vjelm4v1l" path="res://placeholders/Screenshot 2024-07-22 205830.png" id="1_wsvl7"]
+[ext_resource type="PackedScene" uid="uid://c88xevx0ep7mx" path="res://player.tscn" id="2_lbwg6"]
+
+[node name="Map" type="Node2D"]
+
+[node name="Screenshot2024-07-22205830" type="Sprite2D" parent="."]
+position = Vector2(761.5, 507.5)
+scale = Vector2(45.3864, 54.0417)
+texture = ExtResource("1_wsvl7")
+
+[node name="Player" parent="." instance=ExtResource("2_lbwg6")]
+position = Vector2(569, 314)

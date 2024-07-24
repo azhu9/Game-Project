@@ -10,4 +10,5 @@ func shoot():
 
 func _input(event):
 	if event.is_action_pressed("click"):
+		await get_tree().create_timer(0.1).timeout
 		shoot()

@@ -1,0 +1,38 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(1, 1, 1, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "visualNovelStyle"
+},
+"default_portrait": "littleTimmy",
+"description": "",
+"display_name": "Timmy",
+"mirror": false,
+"nicknames": [""],
+"offset": Vector2(0, 0),
+"portraits": {
+"littleTimmy": {
+"export_overrides": {
+"image": "\"res://placeholders/littleTimmy.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"timmyFlipped": {
+"export_overrides": {
+"image": "\"res://placeholders/littleTimmy.png\""
+},
+"mirror": true,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+"scale": 1.0
+}

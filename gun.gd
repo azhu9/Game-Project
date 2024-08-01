@@ -7,7 +7,8 @@ func shoot():
 	new_bullet.global_rotation = %ShootingPoint.global_rotation
 	%ShootingPoint.add_child(new_bullet)
 	
-"""
+""" 
+##alternate shooting method- click to shoot 1 bullet
 func _input(event):
 	if event.is_action_pressed("click"):
 		shoot()

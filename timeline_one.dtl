@@ -1,0 +1,18 @@
+join Joemamacharacter (littleTimmy) center
+Joemamacharacter: Hi! i'm TIMMYY!!!!
+update Joemamacharacter (timmyFlipped)
+Joemamacharacter: Testing Testing\
+This is some mooooooooooorrrreeeeeeee dialogue
+update Joemamacharacter left
+join misato right
+misato: I LOVE GROOMING MINORS!
+update Joemamacharacter [animation="Heartbeat"]
+Joemamacharacter: UH OH!
+Joemamacharacter: BYEEEEE!!!
+leave Joemamacharacter
+update misato center
+update misato [animation="Tada"]
+misato: \:(
+leave misato
+<Empty Text Event>
+[end_timeline]

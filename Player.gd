@@ -9,15 +9,11 @@ func _physics_process(delta):
 	
 	if velocity.length() > 0.0 and mouse_button_pressed == false:
 		rotation = velocity.angle()
+		## later version should have no rotation- should instead
+		## change costumes. This will also avoid the weird direction
+		## changes when shooting
 	
-"""
-func _input(event):
-	if event.is_action_pressed("click"):
-		mouse_button_pressed = true
-		rotate(get_angle_to(get_global_mouse_position()))
-		await get_tree().create_timer(0.1).timeout
-		mouse_button_pressed = false
-	"""
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.is_pressed():  # Mouse button down.

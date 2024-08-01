@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dehsuiwq1tdyy"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_1fllf"]
+[ext_resource type="PackedScene" uid="uid://c88xevx0ep7mx" path="res://player.tscn" id="1_u6q1y"]
+[ext_resource type="PackedScene" uid="uid://bj30cvyov888w" path="res://map.tscn" id="2_mocg4"]
+
+[node name="Game" type="Node2D"]
+top_level = true
+script = ExtResource("1_1fllf")
+
+[node name="Player" parent="." instance=ExtResource("1_u6q1y")]
+position = Vector2(38, 22)
+
+[node name="Map" parent="." instance=ExtResource("2_mocg4")]
+z_index = -1
+position = Vector2(-562, -297)

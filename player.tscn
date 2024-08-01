@@ -27,3 +27,9 @@ texture = ExtResource("2_5mgv7")
 [node name="Gun" parent="Marker2D/Screenshot2024-07-22193421" instance=ExtResource("3_22swn")]
 position = Vector2(-2.03175, 0.885907)
 scale = Vector2(1.01587, 0.442953)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.001
+autostart = true
+
+[connection signal="timeout" from="Timer" to="Marker2D/Screenshot2024-07-22193421/Gun" method="_on_timer_timeout"]

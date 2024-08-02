@@ -29,7 +29,10 @@ overrides = {}
 [sub_resource type="Resource" id="Resource_rss53"]
 script = ExtResource("2_uhfac")
 scene = ExtResource("5_8jre5")
-overrides = {}
+overrides = {
+"box_size": "Vector2(1000, 3000)",
+"text_size": "50.0"
+}
 
 [sub_resource type="Resource" id="Resource_ptw6h"]
 script = ExtResource("2_uhfac")
@@ -56,4 +59,4 @@ script = ExtResource("10_q663b")
 name = "visualNovelStyle"
 base_overrides = {}
 layers = Array[ExtResource("2_uhfac")]([SubResource("Resource_j0i6e"), SubResource("Resource_hgqgm"), SubResource("Resource_5w7re"), SubResource("Resource_rss53"), SubResource("Resource_ptw6h"), SubResource("Resource_yg61w"), SubResource("Resource_cbbaf"), SubResource("Resource_a3n08")])
-metadata/_latest_layer = 1
+metadata/_latest_layer = 3

@@ -6,6 +6,8 @@ var zoom_minimum = Vector2(5.00001, 5.00001)
 var zoom_maximum = Vector2(2.00001, 2.00001)
 var zoom_speed = Vector2(.100001, .100001)
 
+@onready var camera = $Camera2D
+
 func _physics_process(delta):
 	var direction = Input.get_vector("left","right","up","down")
 	velocity = direction * 300
@@ -23,12 +25,12 @@ func _input(event):
 		if event.is_pressed():  # Mouse button down.
 			mouse_button_pressed = true
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP: #Zoom in when MW up
-				if $Camera2D.zoom < zoom_minimum:
-					$Camera2D.zoom += zoom_speed
+				if camera.zoom < zoom_minimum:
+					camera.zoom += zoom_speed
 					pass
 			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN: #Zoom in when MW down
-				if $Camera2D.zoom > zoom_maximum:
-					$Camera2D.zoom -= zoom_speed
+				if camera.zoom > zoom_maximum:
+					camera.zoom -= zoom_speed
 		elif not event.is_pressed():  # Mouse button released.
 			mouse_button_pressed = false
 

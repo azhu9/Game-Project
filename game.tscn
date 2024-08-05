@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dehsuiwq1tdyy"]
+[gd_scene load_steps=10 format=3 uid="uid://dehsuiwq1tdyy"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_1fllf"]
 [ext_resource type="PackedScene" uid="uid://c88xevx0ep7mx" path="res://player.tscn" id="1_u6q1y"]
 [ext_resource type="PackedScene" uid="uid://bj30cvyov888w" path="res://map.tscn" id="2_mocg4"]
 [ext_resource type="Texture2D" uid="uid://qsuwkhyi4v6" path="res://ashlands_tileset.png" id="4_pq1b3"]
 [ext_resource type="Texture2D" uid="uid://hlr5u5tp07xs" path="res://Zombie Apocalypse Tileset Reference.png" id="5_mkna6"]
+[ext_resource type="PackedScene" uid="uid://bou5be5x3gr5r" path="res://enemy.tscn" id="6_0028e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oh2ct"]
 texture = ExtResource("4_pq1b3")
@@ -3081,7 +3082,7 @@ script = ExtResource("1_1fllf")
 [node name="Map" parent="." instance=ExtResource("2_mocg4")]
 z_index = -1
 texture_filter = 1
-position = Vector2(-546, -384)
+position = Vector2(-562, -373)
 
 [node name="TileMap" type="TileMap" parent="Map"]
 texture_filter = 1
@@ -3098,3 +3099,21 @@ layer_2/tile_data = PackedInt32Array(-458767, 851983, 11, 851953, 851983, 11, 31
 
 [node name="Player" parent="." instance=ExtResource("1_u6q1y")]
 position = Vector2(38, 22)
+
+[node name="Enemy" parent="." instance=ExtResource("6_0028e")]
+position = Vector2(-136, -81)
+
+[node name="Enemy2" parent="." instance=ExtResource("6_0028e")]
+position = Vector2(-129, 143)
+
+[node name="Enemy3" parent="." instance=ExtResource("6_0028e")]
+position = Vector2(227, -66)
+
+[node name="Enemy4" parent="." instance=ExtResource("6_0028e")]
+position = Vector2(258, 183)
+
+[node name="Enemy5" parent="." instance=ExtResource("6_0028e")]
+position = Vector2(504, -209)
+
+[node name="Enemy6" parent="." instance=ExtResource("6_0028e")]
+position = Vector2(129, -169)

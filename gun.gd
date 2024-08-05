@@ -17,6 +17,7 @@ func shoot_2():
 		var new_bullet = BULLET.instantiate()
 		new_bullet.global_position = %ShootingPoint.global_position
 		new_bullet.global_rotation = %ShootingPoint.global_rotation + start_angle + (i*angle_increment)
+		new_bullet.load_gun(1000, 10000)
 		%ShootingPoint.add_child(new_bullet)
 	
 """ 
@@ -26,10 +27,18 @@ func _input(event):
 		shoot()
 """
 
-var gun = 2
+static var gun: int = 2
+
+static var gun_id: int = 2:
+	get:
+		return gun_id
+	set(value):
+		gun_id = value
+
+
 func _on_timer_timeout():
 	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
-		match gun:
+		match gun_id:
 			1:
 				shoot_1()
 			2:

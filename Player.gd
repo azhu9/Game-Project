@@ -37,3 +37,6 @@ func _input(event):
 func _process(delta):
 	if mouse_button_pressed: 
 		rotate(get_angle_to(get_global_mouse_position()))
+
+func _on_manual_shot():
+	rotate(get_angle_to(get_global_mouse_position()))

@@ -96,7 +96,3 @@ func _process(delta):
 		emit_signal("rifle")
 	if Input.is_action_pressed("3"): #shotgun
 		emit_signal("shotgun")
-
-
-func _on_manual_shot():
-	pass # Replace with function body.

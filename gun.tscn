@@ -26,7 +26,12 @@ unique_name_in_owner = true
 position = Vector2(15.8882, 0.317074)
 script = ExtResource("3_7awij")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.035
+autostart = true
+
 [connection signal="manual_shot" from="." to="." method="_on_manual_shot"]
 [connection signal="pistol" from="." to="." method="_on_pistol"]
 [connection signal="rifle" from="." to="." method="_on_rifle"]
 [connection signal="shotgun" from="." to="." method="_on_shotgun"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

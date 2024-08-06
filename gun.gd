@@ -3,18 +3,19 @@ signal manual_shot
 signal pistol
 signal rifle
 signal shotgun
+signal awp
 
 const BULLET = preload("res://bullet.tscn")
-static var gun_id: int
-static var gun_type: int
-static var auto_fire: bool
-static var bullet_count: int
-static var spray_angle: float
-static var bullet_speed: int
-static var bullet_range: int
-static var reload_time: float
+static var gun_id: int #gun's unique id
+static var gun_type: int #1=straight line 2=shotgun
+static var auto_fire: bool #self explanatory
+static var bullet_count: int #bullets per shot (only for guntype 2)
+static var spray_angle: float #self explanatory(only for guntype 2)
+static var bullet_speed: int #self explanatory
+static var bullet_range: int #distance bullets travel
+static var reload_time: float #min time between shots (only for non-autofire)
 
-static var loaded: bool = true
+static var loaded: bool = true #used for non-autofire
 
 
 func shoot_1(): #shoots 1 bullet at a time
@@ -87,6 +88,15 @@ func _on_shotgun():
 	bullet_speed = 1500
 	bullet_range = 300
 	reload_time = 1.0
+func _on_awp():
+	gun_id = 4
+	gun_type = 1
+	auto_fire = false
+	bullet_count = 1
+	spray_angle = 0.0
+	bullet_speed = 1000
+	bullet_range = 10000
+	reload_time = 0.2
 
 
 func _process(delta):
@@ -96,3 +106,5 @@ func _process(delta):
 		emit_signal("rifle")
 	if Input.is_action_pressed("3"): #shotgun
 		emit_signal("shotgun")
+	if Input.is_action_pressed("4"): #awp
+		emit_signal("awp")

@@ -30,6 +30,7 @@ script = ExtResource("3_7awij")
 wait_time = 0.035
 autostart = true
 
+[connection signal="awp" from="." to="." method="_on_awp"]
 [connection signal="manual_shot" from="." to="." method="_on_manual_shot"]
 [connection signal="pistol" from="." to="." method="_on_pistol"]
 [connection signal="rifle" from="." to="." method="_on_rifle"]

@@ -33,4 +33,5 @@ scale = Vector2(1.01587, 0.442953)
 wait_time = 0.001
 autostart = true
 
+[connection signal="manual_shot" from="Marker2D/Screenshot2024-07-22193421/Gun" to="." method="_on_gun_manual_shot"]
 [connection signal="timeout" from="Timer" to="Marker2D/Screenshot2024-07-22193421/Gun" method="_on_timer_timeout"]

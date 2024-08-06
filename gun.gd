@@ -1,50 +1,102 @@
 extends Area2D
 signal manual_shot
+signal pistol
+signal rifle
+signal shotgun
 
 const BULLET = preload("res://bullet.tscn")
+static var gun_id: int
+static var gun_type: int
+static var auto_fire: bool
+static var bullet_count: int
+static var spray_angle: float
+static var bullet_speed: int
+static var bullet_range: int
+static var reload_time: float
 
-func shoot_1():
+static var loaded: bool = true
+
+
+func shoot_1(): #shoots 1 bullet at a time
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = %ShootingPoint.global_position
 	new_bullet.global_rotation = %ShootingPoint.global_rotation
-	new_bullet.load_gun(1500, 1000)
+	new_bullet.load_gun(bullet_speed, bullet_range)
 	%ShootingPoint.add_child(new_bullet)
-func shoot_2():
-	var bullet_count = 25
-	var spray_angle = 30  # Total spray angle in degrees
+func shoot_2(): #shoots multiple bullets
 	var angle_increment = deg_to_rad(spray_angle / (bullet_count - 1))  # Angle increment in radians
 	var start_angle = -deg_to_rad(spray_angle / 2)
-
 	for i in range(0,bullet_count,1):
 		var new_bullet = BULLET.instantiate()
 		new_bullet.global_position = %ShootingPoint.global_position
 		new_bullet.global_rotation = %ShootingPoint.global_rotation + start_angle + (i*angle_increment)
-		new_bullet.load_gun(1500, 100)
+		new_bullet.load_gun(bullet_speed, bullet_range-((i%3)*10))
 		%ShootingPoint.add_child(new_bullet)
-	
-""" 
-##alternate shooting method- click to shoot 1 bullet
-func _input(event):
-	if event.is_action_pressed("click"):
-		shoot()
-"""
 
-static var gun_id: int = 1
-var auto_fire: bool = false
-
-
+# autoshot
 func _on_timer_timeout():
 	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and auto_fire):
-		match gun_id:
+		match gun_type:
 			1:
 				shoot_1()
 			2:
 				shoot_2()
 			_:
 				pass
-	
+
+# click to shoot
 func _input(event):
-	if event.is_action_pressed("click") and !auto_fire:
-		rotate(get_angle_to(get_global_mouse_position()))
+	if event.is_action_pressed("click") and !auto_fire and loaded:
 		emit_signal("manual_shot")
-		shoot_1()
+		match gun_type:
+			1:
+				shoot_1()
+			2:
+				shoot_2()
+			_:
+				pass
+		loaded = false
+		await get_tree().create_timer(reload_time).timeout
+		loaded = true
+		
+
+func _on_pistol():
+	gun_id = 1
+	gun_type = 1
+	auto_fire = false
+	bullet_count = 1
+	spray_angle = 0.0
+	bullet_speed = 1000
+	bullet_range = 10000
+	reload_time = 0.2
+func _on_rifle():
+	gun_id = 2
+	gun_type = 1
+	auto_fire = true
+	bullet_count = 1
+	spray_angle = 0.0
+	bullet_speed = 1000
+	bullet_range = 10000
+	reload_time = 0.0
+func _on_shotgun():
+	gun_id = 3
+	gun_type = 2
+	auto_fire = false
+	bullet_count = 12
+	spray_angle = 30
+	bullet_speed = 1500
+	bullet_range = 300
+	reload_time = 1.0
+
+
+func _process(delta):
+	if Input.is_action_pressed("1"): #pistol
+		emit_signal("pistol")
+	if Input.is_action_pressed("2"): #rifle
+		emit_signal("rifle")
+	if Input.is_action_pressed("3"): #shotgun
+		emit_signal("shotgun")
+
+
+func _on_manual_shot():
+	pass # Replace with function body.

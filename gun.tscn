@@ -27,7 +27,7 @@ position = Vector2(15.8882, 0.317074)
 script = ExtResource("3_7awij")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.035
+wait_time = 0.001
 autostart = true
 
 [connection signal="awp" from="." to="." method="_on_awp"]

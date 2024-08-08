@@ -1,3 +1,5 @@
+# when adding a gun, there are 4 places the gun needs to be added:
+# ctrl f 'point 1', 'point 2', etc to find
 extends Area2D
 signal manual_shot
 signal pistol
@@ -18,8 +20,9 @@ static var bullet_range: int #distance bullets travel
 static var reload_time: float #min time between shots
 
 var current_loaded: bool = true
+
 # point 1
-func _physics_process(delta):
+func _physics_process(delta): # used to know what the current gun is
 	match gun_id:
 		1:
 			current_loaded = pistol_loaded
@@ -29,10 +32,11 @@ func _physics_process(delta):
 			current_loaded = shotgun_loaded
 		4:
 			current_loaded = awp_loaded
+
 var rng = RandomNumberGenerator.new() #random number generator
 
 
-func shoot_1(): #shoots 1 bullet at a time without bullet spread
+func shoot_1(): #shoots single bullets without bullet spread
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = %ShootingPoint.global_position
 	new_bullet.global_rotation = %ShootingPoint.global_rotation
@@ -48,20 +52,19 @@ func shoot_2(): #shoots multiple bullets without bullet spread
 		new_bullet.load_gun(bullet_speed, bullet_range)
 		%ShootingPoint.add_child(new_bullet)
 func shoot_3(): #shoots single bullets with bullet spread
-	var angle_increment = deg_to_rad(spray_angle / (bullet_count - 1))  # Angle increment in radians
 	var start_angle = -deg_to_rad(spray_angle / 2)
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = %ShootingPoint.global_position
-	new_bullet.global_rotation = %ShootingPoint.global_rotation + start_angle + deg_to_rad(float((randi() % int(spray_angle*200))/100))
+	new_bullet.global_rotation = %ShootingPoint.global_rotation + start_angle + deg_to_rad(float((randi() % int(spray_angle*200))/200))
 	new_bullet.load_gun(bullet_speed, bullet_range)
 	%ShootingPoint.add_child(new_bullet)
-func shoot_4(): #shoots multiple bullets with bullet spread
+func shoot_4(): #shoots multiple bullets without bullet spread
 	var angle_increment = deg_to_rad(spray_angle / (bullet_count - 1))  # Angle increment in radians
 	var start_angle = -deg_to_rad(spray_angle / 2)
 	for i in range(0,bullet_count,1):
 		var new_bullet = BULLET.instantiate()
 		new_bullet.global_position = %ShootingPoint.global_position
-		new_bullet.global_rotation = %ShootingPoint.global_rotation + start_angle + deg_to_rad(float((randi() % int(spray_angle*200))/100))
+		new_bullet.global_rotation = %ShootingPoint.global_rotation + start_angle + deg_to_rad(float((randi() % int(spray_angle*200))/200))
 		new_bullet.load_gun(bullet_speed, bullet_range+randi()%30)
 		%ShootingPoint.add_child(new_bullet)
 
@@ -87,7 +90,6 @@ func _on_timer_timeout():
 			_:
 				pass
 		loaded_checker()
-	
 
 # click to shoot
 func _input(event):
@@ -122,7 +124,7 @@ func _on_pistol():
 	auto_fire = false #self explanatory
 	bullet_spread = true #is there bullet spread?
 	bullet_count = 1 #bullets per shot (only for guntype 2)
-	spray_angle = 0.50 #DO NOT SET TO 0 UNLESS bullet_spread = false(only for guntype 2)
+	spray_angle = 2.00 #DO NOT SET TO 0 UNLESS bullet_spread = false(only for guntype 2)
 	bullet_speed = 1000 #self explanatory
 	bullet_range = 10000 #distance bullets travel
 	reload_time = 0.2 #min time between shots
@@ -133,10 +135,10 @@ func _on_rifle():
 	auto_fire = true #self explanatory
 	bullet_spread = true #is there bullet spread?
 	bullet_count = 1 #bullets per shot (only for guntype 2)
-	spray_angle = 0.50 #DO NOT SET TO 0 UNLESS bullet_spread = false(only for guntype 2)
+	spray_angle = 20.00 #DO NOT SET TO 0 UNLESS bullet_spread = false(only for guntype 2)
 	bullet_speed = 1000 #self explanatory
 	bullet_range = 10000 #distance bullets travel
-	reload_time = 0.05 #min time between shots
+	reload_time = 0.50 #min time between shots
 static var shotgun_loaded: bool = true #used for non-autofire
 func _on_shotgun():
 	gun_id = 3 #gun's unique id
@@ -144,10 +146,10 @@ func _on_shotgun():
 	auto_fire = false #self explanatory
 	bullet_spread = true #is there bullet spread?
 	bullet_count = 12 #bullets per shot (only for guntype 2)
-	spray_angle = 30 #DO NOT SET TO 0 UNLESS bullet_spread = false(only for guntype 2)
+	spray_angle = 40 #DO NOT SET TO 0 UNLESS bullet_spread = false(only for guntype 2)
 	bullet_speed = 1500 #self explanatory
 	bullet_range = 300 #distance bullets travel
-	reload_time = 1.0 #min time between shots
+	reload_time = 0.50 #min time between shots
 static var awp_loaded: bool = true #used for non-autofire
 func _on_awp():
 	gun_id = 4 #gun's unique id

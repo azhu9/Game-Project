@@ -21,6 +21,8 @@ static var reload_time: float #min time between shots
 
 var current_loaded: bool = true
 
+var rng = RandomNumberGenerator.new() #random number generator
+
 # point 1
 func _physics_process(delta): # used to know what the current gun is
 	match gun_id:
@@ -32,9 +34,6 @@ func _physics_process(delta): # used to know what the current gun is
 			current_loaded = shotgun_loaded
 		4:
 			current_loaded = awp_loaded
-
-var rng = RandomNumberGenerator.new() #random number generator
-
 
 func shoot_1(): #shoots single bullets without bullet spread
 	var new_bullet = BULLET.instantiate()
@@ -70,51 +69,55 @@ func shoot_4(): #shoots multiple bullets without bullet spread
 
 # autoshoot 
 func _on_timer_timeout():
-	#no spread
-	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and auto_fire and current_loaded and not bullet_spread):
-		match gun_type:
-			1:
-				shoot_1()
-			2:
-				shoot_2()
-			_:
-				pass
-		loaded_checker()
-	#spread
-	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and auto_fire and current_loaded and bullet_spread):
-		match gun_type:
-			1:
-				shoot_3()
-			2:
-				shoot_4()
-			_:
-				pass
-		loaded_checker()
+	if current_loaded:
+		#no spread
+		if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and auto_fire and not bullet_spread):
+			match gun_type:
+				1:
+					shoot_1()
+				2:
+					shoot_2()
+				_:
+					pass
+			loaded_checker()
+		#spread
+		elif (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and auto_fire and bullet_spread):
+			match gun_type:
+				1:
+					shoot_3()
+				2:
+					shoot_4()
+				_:
+					pass
+			loaded_checker()
+	else:
+		pass
 
 # click to shoot
 func _input(event):
-	#no spread
-	if event.is_action_pressed("click") and !auto_fire and current_loaded and not bullet_spread:
-		emit_signal("manual_shot")
-		match gun_type:
-			1:
-				shoot_1()
-			2:
-				shoot_2()
-			_:
-				pass
-		loaded_checker()
-	#spread
-	if event.is_action_pressed("click") and !auto_fire and current_loaded and bullet_spread:
-		emit_signal("manual_shot")
-		match gun_type:
-			1:
-				shoot_3()
-			2:
-				shoot_4()
-			_:
-				pass
-		loaded_checker()
+	if current_loaded:
+		#no spread
+		if event.is_action_pressed("click") and !auto_fire and not bullet_spread:
+			emit_signal("manual_shot")
+			match gun_type:
+				1:
+					shoot_1()
+				2:
+					shoot_2()
+				_:
+					pass
+			loaded_checker()
+		#spread
+		if event.is_action_pressed("click") and !auto_fire and bullet_spread:
+			emit_signal("manual_shot")
+			match gun_type:
+				1:
+					shoot_3()
+				2:
+					shoot_4()
+				_:
+					pass
+			loaded_checker()
 
 # point 2
 static var pistol_loaded: bool = true #used for non-autofire
@@ -135,10 +138,10 @@ func _on_rifle():
 	auto_fire = true #self explanatory
 	bullet_spread = true #is there bullet spread?
 	bullet_count = 1 #bullets per shot (only for guntype 2)
-	spray_angle = 20.00 #DO NOT SET TO 0 UNLESS bullet_spread = false(only for guntype 2)
+	spray_angle = 10.00 #DO NOT SET TO 0 UNLESS bullet_spread = false(only for guntype 2)
 	bullet_speed = 1000 #self explanatory
 	bullet_range = 10000 #distance bullets travel
-	reload_time = 0.50 #min time between shots
+	reload_time = 0.05 #min time between shots
 static var shotgun_loaded: bool = true #used for non-autofire
 func _on_shotgun():
 	gun_id = 3 #gun's unique id
@@ -175,6 +178,7 @@ func _process(delta):
 
 #point 4
 func loaded_checker():
+	current_loaded = false
 	match gun_id:
 		1:
 			pistol_loaded = false
@@ -192,3 +196,4 @@ func loaded_checker():
 			awp_loaded = false
 			await get_tree().create_timer(reload_time).timeout
 			awp_loaded = true
+	current_loaded = true

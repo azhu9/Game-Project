@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://hr4nfccg541t"]
+
+[ext_resource type="Script" path="res://Scripts/Smoketrail.gd" id="1_8uuqo"]
+
+[node name="Smoketrail" type="Line2D"]
+script = ExtResource("1_8uuqo")

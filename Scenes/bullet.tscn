@@ -1,20 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpwijsstp4ams"]
 
-[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_3ar7u"]
-[ext_resource type="Texture2D" uid="uid://dmee2bp7spffc" path="res://placeholders/bullet.png" id="2_7g766"]
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_wgojq"]
+[ext_resource type="Texture2D" uid="uid://dmee2bp7spffc" path="res://placeholders/bullet.png" id="2_3li1n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xpxnx"]
 radius = 4.0
 
 [node name="bullet" type="Area2D"]
 top_level = true
-script = ExtResource("1_3ar7u")
+script = ExtResource("1_wgojq")
 
 [node name="Screenshot2024-07-22211131" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1.43293, 0)
 scale = Vector2(0.713414, 1)
-texture = ExtResource("2_7g766")
+texture = ExtResource("2_3li1n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 0)

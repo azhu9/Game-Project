@@ -3,13 +3,28 @@
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_wgojq"]
 [ext_resource type="Texture2D" uid="uid://dmee2bp7spffc" path="res://placeholders/bullet.png" id="2_3li1n"]
 [ext_resource type="PackedScene" uid="uid://hr4nfccg541t" path="res://Scenes/smoketrail.tscn" id="3_jyegx"]
-[ext_resource type="Script" path="res://Scripts/bullettrail.gd" id="4_2asog"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xpxnx"]
 radius = 4.0
 
 [sub_resource type="Gradient" id="Gradient_echbu"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_07tae"]
+script/source = "extends Trails
+
+@export var child_start_color : Color = Color(1, 0, 0)  # Default to red
+@export var child_end_color : Color = Color(1, 1, 1)    # Default to white
+
+func _ready():
+	# Optionally set or override gradient colors here if needed
+	START_COLOR = child_start_color
+	END_COLOR = child_end_color
+	update_gradient()
+
+func _get_position():
+	return get_parent().position
+"
 
 [node name="bullet" type="Area2D"]
 top_level = true
@@ -29,6 +44,6 @@ shape = SubResource("CircleShape2D_xpxnx")
 show_behind_parent = true
 top_level = true
 gradient = SubResource("Gradient_echbu")
-script = ExtResource("4_2asog")
+script = SubResource("GDScript_07tae")
 child_start_color = Color(1, 0, 0, 1)
 child_end_color = Color(1, 1, 1, 1)

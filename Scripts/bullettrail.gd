@@ -1,7 +1,7 @@
 extends Trails
 
-@export var child_start_color : Color = Color(1, 0, 0)  # Default to yellow
-@export var child_end_color : Color = Color(1, 1, 1)    # Default to blue
+@export var child_start_color : Color = Color(1, 0, 0)  # Default to red
+@export var child_end_color : Color = Color(1, 1, 1)    # Default to white
 
 func _ready():
 	# Optionally set or override gradient colors here if needed

@@ -7,7 +7,7 @@ signal rifle
 signal shotgun
 signal awp
 
-const BULLET = preload("res://bullet.tscn")
+const BULLET = preload("res://Scenes/bullet.tscn")
 
 static var gun_id: int #gun's unique id
 static var gun_type: int #1=one bullet 2=multiple bullets

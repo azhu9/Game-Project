@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hlr5u5tp07xs"
-path="res://.godot/imported/Zombie Apocalypse Tileset Reference.png-44dd24a7aac74fb4de89a367a94b5c54.ctex"
+uid="uid://de4qmrrs2jg7w"
+path="res://.godot/imported/weapons_tileset.png-089cb5c4b407f9efe158bd0d31dfdd2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Zombie Apocalypse Tileset Reference.png"
-dest_files=["res://.godot/imported/Zombie Apocalypse Tileset Reference.png-44dd24a7aac74fb4de89a367a94b5c54.ctex"]
+source_file="res://Assets/weapons_tileset.png"
+dest_files=["res://.godot/imported/weapons_tileset.png-089cb5c4b407f9efe158bd0d31dfdd2c.ctex"]
 
 [params]
 

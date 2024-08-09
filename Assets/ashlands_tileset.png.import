@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de4qmrrs2jg7w"
-path="res://.godot/imported/weapons_tileset.png-b7bdffb78d50705105ffb931ea185b80.ctex"
+uid="uid://qsuwkhyi4v6"
+path="res://.godot/imported/ashlands_tileset.png-c7650f949757e91f446622d290225b43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weapons_tileset.png"
-dest_files=["res://.godot/imported/weapons_tileset.png-b7bdffb78d50705105ffb931ea185b80.ctex"]
+source_file="res://Assets/ashlands_tileset.png"
+dest_files=["res://.godot/imported/ashlands_tileset.png-c7650f949757e91f446622d290225b43.ctex"]
 
 [params]
 

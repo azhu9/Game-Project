@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://c88xevx0ep7mx"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_c2d17"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_c2d17"]
 [ext_resource type="Texture2D" uid="uid://dw448gpkaaqpb" path="res://placeholders/Screenshot 2024-07-22 193421.png" id="2_5mgv7"]
-[ext_resource type="PackedScene" uid="uid://bfnyewc1gghtg" path="res://gun.tscn" id="3_22swn"]
-[ext_resource type="Script" path="res://Marker2D.gd" id="4_a57ew"]
+[ext_resource type="PackedScene" uid="uid://bfnyewc1gghtg" path="res://Scenes/gun.tscn" id="3_22swn"]
+[ext_resource type="Script" path="res://Scripts/Marker2D.gd" id="4_a57ew"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6nub"]
 radius = 14.0357

@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://dehsuiwq1tdyy"]
 
-[ext_resource type="Script" path="res://game.gd" id="1_1fllf"]
-[ext_resource type="PackedScene" uid="uid://c88xevx0ep7mx" path="res://player.tscn" id="1_u6q1y"]
-[ext_resource type="PackedScene" uid="uid://bj30cvyov888w" path="res://map.tscn" id="2_mocg4"]
-[ext_resource type="Texture2D" uid="uid://qsuwkhyi4v6" path="res://ashlands_tileset.png" id="4_pq1b3"]
-[ext_resource type="Texture2D" uid="uid://hlr5u5tp07xs" path="res://Zombie Apocalypse Tileset Reference.png" id="5_mkna6"]
-[ext_resource type="PackedScene" uid="uid://bou5be5x3gr5r" path="res://enemy.tscn" id="6_0028e"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_1fllf"]
+[ext_resource type="PackedScene" uid="uid://c88xevx0ep7mx" path="res://Scenes/player.tscn" id="1_u6q1y"]
+[ext_resource type="PackedScene" uid="uid://bj30cvyov888w" path="res://Scenes/map.tscn" id="2_mocg4"]
+[ext_resource type="Texture2D" uid="uid://qsuwkhyi4v6" path="res://Assets/ashlands_tileset.png" id="4_pq1b3"]
+[ext_resource type="Texture2D" uid="uid://hlr5u5tp07xs" path="res://Assets/Zombie Apocalypse Tileset Reference.png" id="5_mkna6"]
+[ext_resource type="PackedScene" uid="uid://bou5be5x3gr5r" path="res://Scenes/enemy.tscn" id="6_0028e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oh2ct"]
 texture = ExtResource("4_pq1b3")

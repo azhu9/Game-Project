@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bfnyewc1gghtg"]
 
 [ext_resource type="Texture2D" uid="uid://cgdqvi5e08dpb" path="res://placeholders/Screenshot 2024-07-22 201501.png" id="1_y7ung"]
-[ext_resource type="Script" path="res://gun.gd" id="1_yw2m8"]
-[ext_resource type="Script" path="res://Marker2D.gd" id="3_7awij"]
+[ext_resource type="Script" path="res://Scripts/gun.gd" id="1_yw2m8"]
+[ext_resource type="Script" path="res://Scripts/Marker2D.gd" id="3_7awij"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yotau"]
 size = Vector2(86, 39)

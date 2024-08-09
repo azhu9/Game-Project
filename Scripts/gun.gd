@@ -8,6 +8,9 @@ signal shotgun
 signal awp
 
 const BULLET = preload("res://Scenes/bullet.tscn")
+const BULLET_TRAIL = preload("res://Scenes/smoketrail.tscn")  # Path to the bullet trail scene
+
+
 
 static var gun_id: int #gun's unique id
 static var gun_type: int #1=one bullet 2=multiple bullets
@@ -18,6 +21,7 @@ static var spray_angle: float #DO NOT SET TO 0 UNLESS bullet_spread = false(only
 static var bullet_speed: int #self explanatory
 static var bullet_range: int #distance bullets travel
 static var reload_time: float #min time between shots
+static var trail_enabled: bool #determines if bullets have a trail or not
 
 var current_loaded: bool = true
 
@@ -35,27 +39,42 @@ func _physics_process(delta): # used to know what the current gun is
 		4:
 			current_loaded = awp_loaded
 
-func shoot_1(): #shoots single bullets without bullet spread
+func shoot_1(): # shoots single bullets without bullet spread
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = %ShootingPoint.global_position
 	new_bullet.global_rotation = %ShootingPoint.global_rotation
 	new_bullet.load_gun(bullet_speed, bullet_range)
+	if trail_enabled:
+		var bullet_trail = BULLET_TRAIL.instantiate()
+		new_bullet.add_child(bullet_trail)
+		bullet_trail.global_position = new_bullet.global_position
+		bullet_trail.global_rotation = new_bullet.global_rotation
 	%ShootingPoint.add_child(new_bullet)
-func shoot_2(): #shoots multiple bullets without bullet spread
+func shoot_2(): # shoots multiple bullets without bullet spread
 	var angle_increment = deg_to_rad(spray_angle / (bullet_count - 1))  # Angle increment in radians
 	var start_angle = -deg_to_rad(spray_angle / 2)
-	for i in range(0,bullet_count,1):
+	for i in range(0, bullet_count, 1):
 		var new_bullet = BULLET.instantiate()
 		new_bullet.global_position = %ShootingPoint.global_position
-		new_bullet.global_rotation = %ShootingPoint.global_rotation + start_angle + (i*angle_increment)
+		new_bullet.global_rotation = %ShootingPoint.global_rotation + start_angle + (i * angle_increment)
 		new_bullet.load_gun(bullet_speed, bullet_range)
+		if trail_enabled:
+			var bullet_trail = BULLET_TRAIL.instantiate()
+			new_bullet.add_child(bullet_trail)
+			bullet_trail.global_position = new_bullet.global_position
+			bullet_trail.global_rotation = new_bullet.global_rotation
 		%ShootingPoint.add_child(new_bullet)
 func shoot_3(): #shoots single bullets with bullet spread
 	var start_angle = -deg_to_rad(spray_angle / 2)
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = %ShootingPoint.global_position
 	new_bullet.global_rotation = %ShootingPoint.global_rotation + start_angle + deg_to_rad(float((randi() % int(spray_angle*200))/200))
-	new_bullet.load_gun(bullet_speed, bullet_range)
+	new_bullet.load_gun(bullet_speed, bullet_range)	
+	if trail_enabled:
+		var bullet_trail = BULLET_TRAIL.instantiate()
+		new_bullet.add_child(bullet_trail)
+		bullet_trail.global_position = new_bullet.global_position
+		bullet_trail.global_rotation = new_bullet.global_rotation
 	%ShootingPoint.add_child(new_bullet)
 func shoot_4(): #shoots multiple bullets without bullet spread
 	var angle_increment = deg_to_rad(spray_angle / (bullet_count - 1))  # Angle increment in radians
@@ -65,6 +84,11 @@ func shoot_4(): #shoots multiple bullets without bullet spread
 		new_bullet.global_position = %ShootingPoint.global_position
 		new_bullet.global_rotation = %ShootingPoint.global_rotation + start_angle + deg_to_rad(float((randi() % int(spray_angle*200))/200))
 		new_bullet.load_gun(bullet_speed, bullet_range+randi()%30)
+		if trail_enabled:
+			var bullet_trail = BULLET_TRAIL.instantiate()
+			new_bullet.add_child(bullet_trail)
+			bullet_trail.global_position = new_bullet.global_position
+			bullet_trail.global_rotation = new_bullet.global_rotation
 		%ShootingPoint.add_child(new_bullet)
 
 # autoshoot 
@@ -131,6 +155,7 @@ func _on_pistol():
 	bullet_speed = 1000 #self explanatory
 	bullet_range = 10000 #distance bullets travel
 	reload_time = 0.2 #min time between shots
+	trail_enabled = true #determines if bullets have a trail or not
 static var rifle_loaded: bool = true #used for non-autofire
 func _on_rifle():
 	gun_id = 2 #gun's unique id
@@ -142,6 +167,7 @@ func _on_rifle():
 	bullet_speed = 1000 #self explanatory
 	bullet_range = 10000 #distance bullets travel
 	reload_time = 0.05 #min time between shots
+	trail_enabled = true #determines if bullets have a trail or not
 static var shotgun_loaded: bool = true #used for non-autofire
 func _on_shotgun():
 	gun_id = 3 #gun's unique id
@@ -153,6 +179,7 @@ func _on_shotgun():
 	bullet_speed = 1500 #self explanatory
 	bullet_range = 300 #distance bullets travel
 	reload_time = 0.50 #min time between shots
+	trail_enabled = true #determines if bullets have a trail or not
 static var awp_loaded: bool = true #used for non-autofire
 func _on_awp():
 	gun_id = 4 #gun's unique id
@@ -164,6 +191,7 @@ func _on_awp():
 	bullet_speed = 1000 #self explanatory
 	bullet_range = 10000 #distance bullets travel
 	reload_time = 2.0 #min time between shots
+	trail_enabled = true #determines if bullets have a trail or not
 
 # point 3
 func _process(delta):

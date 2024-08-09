@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpwijsstp4ams"]
+[gd_scene load_steps=7 format=3 uid="uid://bpwijsstp4ams"]
 
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_wgojq"]
 [ext_resource type="Texture2D" uid="uid://dmee2bp7spffc" path="res://placeholders/bullet.png" id="2_3li1n"]
+[ext_resource type="PackedScene" uid="uid://hr4nfccg541t" path="res://Scenes/smoketrail.tscn" id="3_jyegx"]
+[ext_resource type="Script" path="res://Scripts/bullettrail.gd" id="4_2asog"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xpxnx"]
 radius = 4.0
+
+[sub_resource type="Gradient" id="Gradient_echbu"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [node name="bullet" type="Area2D"]
 top_level = true
@@ -19,3 +24,11 @@ texture = ExtResource("2_3li1n")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 0)
 shape = SubResource("CircleShape2D_xpxnx")
+
+[node name="Smoketrail" parent="." instance=ExtResource("3_jyegx")]
+show_behind_parent = true
+top_level = true
+gradient = SubResource("Gradient_echbu")
+script = ExtResource("4_2asog")
+child_start_color = Color(1, 0, 0, 1)
+child_end_color = Color(1, 1, 1, 1)

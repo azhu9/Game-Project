@@ -3,7 +3,7 @@ extends CharacterBody2D
 var mouse_button_pressed:bool
 #variables for camera zoom
 var zoom_minimum = Vector2(5.00001, 5.00001)
-var zoom_maximum = Vector2(2.00001, 2.00001)
+var zoom_maximum = Vector2(1.00001, 1.00001)
 var zoom_speed = Vector2(.100001, .100001)
 
 var walk_speed = 200

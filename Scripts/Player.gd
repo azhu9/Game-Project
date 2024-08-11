@@ -6,12 +6,19 @@ var zoom_minimum = Vector2(5.00001, 5.00001)
 var zoom_maximum = Vector2(2.00001, 2.00001)
 var zoom_speed = Vector2(.100001, .100001)
 
+var walk_speed = 200
+var sprint_speed = walk_speed * 1.5
+
 @onready var camera = $Camera2D
 
 func _physics_process(delta):
 	var direction = Input.get_vector("left","right","up","down")
-	velocity = direction * 300
-	move_and_slide()
+	if Input.is_action_pressed("sprint"):
+		velocity = direction * sprint_speed
+		move_and_slide()
+	else:
+		velocity = direction * walk_speed
+		move_and_slide()
 	
 	if velocity.length() > 0.0 and mouse_button_pressed == false:
 		rotation = velocity.angle()

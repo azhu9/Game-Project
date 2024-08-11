@@ -16,6 +16,18 @@ shape = SubResource("CircleShape2D_x6nub")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
+limit_left = -1642
+limit_top = -1674
+limit_right = 1673
+limit_bottom = 1662
+limit_smoothed = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
 
 [node name="Marker2D" type="Marker2D" parent="."]
 script = ExtResource("4_a57ew")

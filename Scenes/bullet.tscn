@@ -47,3 +47,5 @@ gradient = SubResource("Gradient_echbu")
 script = SubResource("GDScript_07tae")
 child_start_color = Color(1, 0, 0, 1)
 child_end_color = Color(1, 1, 1, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

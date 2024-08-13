@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dehsuiwq1tdyy"]
+[gd_scene load_steps=12 format=3 uid="uid://dehsuiwq1tdyy"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_1fllf"]
 [ext_resource type="PackedScene" uid="uid://c88xevx0ep7mx" path="res://Scenes/player.tscn" id="1_u6q1y"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://qsuwkhyi4v6" path="res://Assets/ashlands_tileset.png" id="4_pq1b3"]
 [ext_resource type="Texture2D" uid="uid://hlr5u5tp07xs" path="res://Assets/Zombie Apocalypse Tileset Reference.png" id="5_mkna6"]
 [ext_resource type="PackedScene" uid="uid://bou5be5x3gr5r" path="res://Scenes/enemy.tscn" id="6_0028e"]
+[ext_resource type="PackedScene" uid="uid://c7uedshb1l4vn" path="res://trapInv/trap_ui.tscn" id="7_dievj"]
+[ext_resource type="PackedScene" uid="uid://xekayg45cfhf" path="res://gunInv/gun_ui.tscn" id="8_8v1xj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oh2ct"]
 texture = ExtResource("4_pq1b3")
@@ -3267,3 +3269,36 @@ position = Vector2(504, -209)
 
 [node name="Enemy6" parent="." instance=ExtResource("6_0028e")]
 position = Vector2(129, -169)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Trap_UI" parent="CanvasLayer" instance=ExtResource("7_dievj")]
+process_mode = 3
+process_priority = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -154.5
+offset_top = -68.0
+offset_right = 154.5
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="gun_ui" parent="CanvasLayer2" instance=ExtResource("8_8v1xj")]
+process_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -154.5
+offset_top = -68.0
+offset_right = 154.5
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dkhfibmsihbuc"]
+
+[ext_resource type="Script" path="res://trapInv/trap_inv_item.gd" id="1_iyrj1"]
+[ext_resource type="Texture2D" uid="uid://bm7w2goa07i4e" path="res://placeholders/Screenshot 2024-08-11 224528.png" id="2_wwi3k"]
+
+[resource]
+script = ExtResource("1_iyrj1")
+name = "spikes"
+texture = ExtResource("2_wwi3k")

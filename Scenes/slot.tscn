@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dedrlf7ehntd2"]
+
+[ext_resource type="Texture2D" uid="uid://dh6e763orkoqd" path="res://placeholders/itemslot.png" id="1_c1kcm"]
+
+[node name="slot" type="Button"]
+custom_minimum_size = Vector2(48, 48)
+offset_right = 48.0
+offset_bottom = 48.0
+
+[node name="Itemslot" type="Sprite2D" parent="."]
+position = Vector2(24, 24)
+texture = ExtResource("1_c1kcm")

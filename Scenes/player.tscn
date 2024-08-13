@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c88xevx0ep7mx"]
+[gd_scene load_steps=7 format=3 uid="uid://c88xevx0ep7mx"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_c2d17"]
 [ext_resource type="Texture2D" uid="uid://dw448gpkaaqpb" path="res://placeholders/Screenshot 2024-07-22 193421.png" id="2_5mgv7"]
+[ext_resource type="Resource" uid="uid://b2bwctc2l57nm" path="res://trapInv/playertrapinv.tres" id="2_64gu8"]
 [ext_resource type="PackedScene" uid="uid://bfnyewc1gghtg" path="res://Scenes/gun.tscn" id="3_22swn"]
 [ext_resource type="Script" path="res://Scripts/Marker2D.gd" id="4_a57ew"]
 
@@ -10,6 +11,7 @@ radius = 14.0357
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_c2d17")
+inv = ExtResource("2_64gu8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_x6nub")

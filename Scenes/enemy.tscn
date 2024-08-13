@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bou5be5x3gr5r"]
+[gd_scene load_steps=6 format=3 uid="uid://bou5be5x3gr5r"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_wsl6b"]
 [ext_resource type="Texture2D" uid="uid://bn03jupp06csi" path="res://placeholders/enemy.png" id="2_y5oxh"]
+[ext_resource type="Script" path="res://Scenes/AI.gd" id="3_sljbt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jsw31"]
 radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6w7dy"]
+radius = 215.037
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_wsl6b")
@@ -15,3 +19,13 @@ texture = ExtResource("2_y5oxh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jsw31")
+
+[node name="AI" type="Node2D" parent="."]
+script = ExtResource("3_sljbt")
+
+[node name="DetectionZone" type="Area2D" parent="AI" groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/DetectionZone"]
+shape = SubResource("CircleShape2D_6w7dy")
+
+[connection signal="body_entered" from="AI/DetectionZone" to="AI" method="_on_detection_zone_body_entered"]

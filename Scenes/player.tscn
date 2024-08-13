@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://b2bwctc2l57nm" path="res://trapInv/playertrapinv.tres" id="2_64gu8"]
 [ext_resource type="PackedScene" uid="uid://bfnyewc1gghtg" path="res://Scenes/gun.tscn" id="3_22swn"]
 [ext_resource type="Script" path="res://Scripts/Marker2D.gd" id="4_a57ew"]
+[ext_resource type="AudioStream" uid="uid://bnw3mvwo5c57b" path="res://Audio/Laser_shoot 4.wav" id="5_bilm3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6nub"]
 radius = 14.0357
@@ -42,5 +43,10 @@ texture = ExtResource("2_5mgv7")
 [node name="Gun" parent="Marker2D/Screenshot2024-07-22193421" instance=ExtResource("3_22swn")]
 position = Vector2(-2.03175, 0.885907)
 scale = Vector2(1.01587, 0.442953)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Marker2D/Screenshot2024-07-22193421/Gun" groups=["player"]]
+unique_name_in_owner = true
+stream = ExtResource("5_bilm3")
+volume_db = -14.054
 
 [connection signal="manual_shot" from="Marker2D/Screenshot2024-07-22193421/Gun" to="." method="_on_gun_manual_shot"]

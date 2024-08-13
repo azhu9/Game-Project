@@ -9,6 +9,8 @@ var zoom_speed = Vector2(.100001, .100001)
 var walk_speed = 200
 var sprint_speed = walk_speed * 1.5
 
+var health: int = 100
+
 @onready var camera = $Camera2D
 
 @export var inv: Inv
@@ -18,9 +20,11 @@ func _physics_process(delta):
 	if Input.is_action_pressed("sprint"):
 		velocity = direction * sprint_speed
 		move_and_slide()
+		#look_at(get_global_mouse_position())
 	else:
 		velocity = direction * walk_speed
 		move_and_slide()
+		look_at(get_global_mouse_position())
 	
 	if velocity.length() > 0.0 and mouse_button_pressed == false:
 		rotation = velocity.angle()
@@ -49,3 +53,7 @@ func _process(delta):
 
 func _on_gun_manual_shot():
 	rotate(get_angle_to(get_global_mouse_position()))
+	
+func handle_hit():
+	health -= 20
+	print("player hit", health)
